@@ -1,10 +1,27 @@
 package subtask3
 
+@Suppress("UNREACHABLE_CODE")
 class BillCounter {
 
-    // TODO: Complete the following function
-    // The output could be "Bon Appetit" or the string with number(e.g "10")
     fun calculateFairlySplit(bill: IntArray, k: Int, b: Int): String {
-        throw NotImplementedError("Not implemented")
+
+        val billList = bill.toCollection(ArrayList())
+        var sumAll = 0
+        var sumAnn = 0
+        for (i in 0..billList.size - 1) {
+            sumAll += billList.get(i)
+        }
+        billList.removeAt(k)
+        for (i in 0..billList.size - 1) {
+            sumAnn += billList.get(i)
+        }
+        val brianPay = sumAll - (sumAnn/2)
+        val annPay = sumAll - brianPay
+        if (b == annPay) {
+            return ("Bon Appetit")
+        }
+        else {
+            return (b - annPay).toString()
+        }
     }
 }
